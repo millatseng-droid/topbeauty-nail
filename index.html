@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <!-- 15. viewport 修正：移除 maximum-scale 與 user-scalable，解決強制縮小問題 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="深耕美甲業26年，TOP BEAUTY 頂尖美學專注於足部深層保養、捲甲溫和處理與問題指甲修護。給您最安心的美甲體驗。">
+    <title>TOP BEAUTY 頂尖美學｜專業美甲與足部修護</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #FAF6F0;         /* 溫柔奶茶白 */
+            --text-primary: #4A4238;     /* 質感深棕灰 */
+            --text-secondary: #7A7268;   /* 溫暖灰 */
+            --accent-blue: #8CAEBC;      /* 寧靜海洋藍 */
+            --border-color: #E3D5C5;     /* 醇厚奶茶色 */
+            --nav-bg: rgba(250, 246, 240, 0.98);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            width: 100%;
+            overflow-x: hidden;
+            scroll-padding-top: 80px; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: Arial, 'Noto Sans TC', sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+            letter-spacing: 0.05em;
+            width: 100%;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Noto Serif TC', serif; 
+            font-weight: 500;
+            color: var(--text-primary);
+            word-break: keep-all;
+        }
+
+        .story-text p {
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.06em;
+            word-break: keep-all; 
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 導覽列：仿高質感指標性沙龍選單 */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #FFFFFF; 
+            z-index: 1000;
+            border-bottom: 1px solid #F2F2F2; 
+            padding: 12px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 38px; 
+            width: auto;
+            mix-blend-mode: multiply; 
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 26px; 
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1A1A1A; 
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #000000;
+            opacity: 0.5; 
+        }
+
+        .btn-reserve-nav {
+            background-color: transparent;
+            color: #1A1A1A !important;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            border: 1px solid #1A1A1A;
+            transition: all 0.4s;
+        }
+        
+        .btn-reserve-nav:hover {
+            background-color: #1A1A1A;
+            color: #FFFFFF !important;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #1A1A1A;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        section {
+            padding: 90px 5%;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1000px; 
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(26px, 4vw, 32px);
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            letter-spacing: 4px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 13px;
+            color: var(--accent-blue);
+            margin-bottom: 50px;
+            font-family: 'Playfair Display', serif; 
+            font-style: italic;
+            letter-spacing: 3px;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 60px;
+            position: relative;
+            background: linear-gradient(rgba(20, 20, 20, 0.45), rgba(15, 15, 15, 0.8)), 
+                        url('https://i.urusai.cc/DW85m.jpeg') center/cover no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 48px);
+            line-height: 1.2;
+            margin-bottom: 12px; 
+            letter-spacing: 8px;
+            color: #FFFFFF; 
+            font-family: Arial, sans-serif; 
+            font-weight: 400;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-subtitle-expert {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(22px, 4.5vw, 38px);
+            color: #FAF6F0;
+            letter-spacing: 10px;
+            font-weight: 500;
+            margin-top: 5px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            opacity: 0.95;
+        }
+
+        .btn-hero {
+            margin-top: 40px;
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+            background: transparent;
+        }
+
+        .btn-hero:hover {
+            background-color: #FFFFFF;
+            color: #1A1A1A;
+        }
+
+        .about-parallax {
+            background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.95)), 
+                        url('http://googleusercontent.com/image_collection/image_retrieval/2408970286503172783') center/cover no-repeat;
+            background-attachment: fixed;
+            padding: 100px 5%;
+            color: #FFFFFF;
+        }
+
+        .about-content-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+            text-align: left;
+        }
+
+        .about-parallax .section-title,
+        .about-parallax .section-subtitle {
+            text-align: left;
+            color: #FFFFFF;
+        }
+        
+        .about-parallax .story-text p {
+            color: #EBEBEB;
+        }
+
+        .founder-photo-container {
+            position: relative;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            overflow: hidden;
+            transform: rotate(1deg);
+            transition: transform 0.4s ease;
+        }
+
+        .founder-photo-container img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .features {
+            background-color: #F4EFE9;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+
+        .feature-card {
+            display: flex;
+            align-items: center;
+            background: transparent;
+            gap: 40px;
+        }
+
+        .feature-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .feature-img-container {
+            flex: 1;
+            height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            background-color: #FAF6F0;
+        }
+
+        .feature-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-content {
+            flex: 1;
+            text-align: left;
+            padding: 10px;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* 服務項目區塊 */
+        .service-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .service-row:nth-child(even) {
+            direction: rtl;
+        }
+
+        .service-row:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .service-img {
+            width: 100%;
+            height: 320px; 
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #FAF6F0; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            object-position: center;
+            background-color: #FAF6F0;
+            padding: 8px;
+        }
+
+        .service-img.zoom-nail img {
+            object-fit: cover;
+            transform: scale(1.3);
+            padding: 0;
+        }
+
+        /* 服務項目重點亮點標題卡片 */
+        .service-highlight-badge {
+            background: rgba(140, 174, 188, 0.12);
+            padding: 10px 15px;
+            border-left: 3px solid var(--accent-blue);
+            margin-bottom: 15px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .service-highlight-badge p {
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0 !important;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .price-section {
+            background-color: #F4EFE9;
+        }
+
+        .price-card-container {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .price-card-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .price-notice-box {
+            background-color: #FAF6F0;
+            border-left: 4px solid var(--accent-blue);
+            padding: 20px;
+            margin-top: 25px;
+            text-align: left;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .testimonials {
+            background-color: #FAF6F0;
+        }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .testi-card {
+            background: #FFFFFF;
+            padding: 35px 25px;
+            position: relative;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testi-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 60px;
+            font-family: 'Playfair Display', serif;
+            color: var(--border-color);
+            line-height: 1;
+        }
+
+        .testi-card p {
+            position: relative;
+            z-index: 2;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .testi-author {
+            color: var(--accent-blue);
+            font-weight: 500;
+            text-align: right;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            margin-top: 10px;
+        }
+
+        .stars {
+            color: #E2B961;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .easter-egg-section {
+            background-color: #F4EFE9;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .booking-steps {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+            max-width: 280px;
+        }
+
+        .step-num {
+            font-size: 50px;
+            font-family: 'Playfair Display', serif;
+            color: var(--border-color);
+            line-height: 1;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .contact-box {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            padding: 40px 20px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+
+        .contact-box h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            letter-spacing: 3px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .btn-large {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 300px;
+            padding: 14px 20px;
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 2px;
+            border: 1px solid var(--text-primary);
+            border-radius: 30px;
+            transition: all 0.4s ease;
+        }
+
+        .btn-large i {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .btn-large:hover {
+            background-color: transparent;
+            color: var(--text-primary);
+        }
+
+        footer {
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+            padding: 25px 5%;
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .small-counter {
+            color: #aaa;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ============================================================
+           📱 手機版 RWD 適配 (Max-width: 768px)
+           ============================================================ */
+        @media (max-width: 768px) {
+            /* 1, 2. 確保沒有設定死寬度撐爆螢幕 */
+            body, .container {
+                overflow-x: hidden;
+                width: 100%;
+            }
+
+            /* 3, 4, 5. 首頁 Hero 滿版設定、背景修復 */
+            .hero {
+                height: 90svh; /* 手機版近滿版高度 */
+                background-attachment: scroll !important; /* 解決 iPhone background fixed 破圖 */
+                background-position: center center;
+                padding-top: 80px; 
+            }
+
+            .hero-content {
+                padding: 0 15px; /* 給予兩側適當留白避免貼邊 */
+            }
+
+            /* 6. TOP BEAUTY 主標題大小控制與防溢出 */
+            .hero h1 {
+                font-size: 40px; 
+                letter-spacing: 3px; /* 縮小字距，防止文字過長導致網頁縮小 */
+                margin-bottom: 8px;
+            }
+
+            /* 7. 足部保養專家 副標題大小控制 */
+            .hero-subtitle-expert {
+                font-size: 26px; 
+                letter-spacing: 6px; /* 縮小字距 */
+            }
+
+            /* 8. 預約按鈕手機版放大 */
+            .btn-hero {
+                width: 80%; 
+                max-width: 300px;
+                height: 56px; /* 增加高度更方便點擊 */
+                font-size: 16px;
+                margin-top: 35px;
+            }
+
+            /* 9. 導覽列與 Logo 放大 */
+            .nav-logo img {
+                height: 42px; /* 放大 Logo */
+            }
+
+            .hamburger {
+                display: block;
+                font-size: 26px; /* 放大漢堡按鈕 */
+                padding: 10px;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #FFFFFF;
+                flex-direction: column;
+                gap: 15px;
+                padding: 25px 0;
+                border-bottom: 1px solid #F2F2F2;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                display: none; 
+            }
+
+            .nav-links.active {
+                display: flex; 
+            }
+
+            /* 10. 區塊內距調整：左右充分利用，不要留白過多 */
+            section { 
+                padding: 65px 20px; 
+            }
+
+            .about-parallax {
+                background-attachment: scroll !important;
+                padding: 65px 20px;
+            }
+
+            .about-content-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .founder-photo-container {
+                order: -1;
+                max-width: 100%;
+                margin: 0 auto;
+                transform: rotate(0deg); /* 拿掉手機版的傾斜，排版更工整 */
+            }
+
+            .about-parallax .section-title,
+            .about-parallax .section-subtitle,
+            .about-parallax .story-text {
+                text-align: center;
+            }
+
+            /* 純淨堅持：垂直排列 */
+            .feature-card, .feature-card:nth-child(even) {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .feature-img-container {
+                height: 260px;
+                width: 100%;
+            }
+
+            .feature-content {
+                text-align: center;
+                padding: 0;
+            }
+
+            .feature-icon {
+                margin: 0 auto 15px auto;
+            }
+
+            /* 11. 服務項目：明確區隔、寬度 100% */
+            .service-row, .service-row:nth-child(even) {
+                grid-template-columns: 1fr;
+                direction: ltr !important; /* 解除交錯排版 */
+                gap: 25px; /* 圖片與文字的區隔間距 */
+                margin-bottom: 55px;
+            }
+
+            .service-img {
+                height: 280px;
+                width: 100%;
+            }
+
+            .service-highlight-badge {
+                text-align: left;
+                display: inline-block;
+            }
+
+            /* 12, 13. 真實回饋與預約流程：垂直單欄排列 */
+            .testi-grid, .booking-steps {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .booking-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .step {
+                max-width: 100%;
+            }
+
+            .story-text p {
+                font-size: 15px; 
+            }
+
+            .footer-content {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        /* 14, 16. 極小螢幕 (如 iPhone SE, 12 mini, 390px 寬度) 專屬防破版微調 */
+        @media (max-width: 390px) {
+            section { 
+                padding: 50px 15px; /* 再縮小左右留白 */
+            }
+
+            .about-parallax {
+                padding: 50px 15px;
+            }
+
+            .hero h1 {
+                font-size: 35px; /* 確保不會撐破小螢幕 */
+                letter-spacing: 2px;
+            }
+
+            .hero-subtitle-expert {
+                font-size: 24px;
+                letter-spacing: 4px;
+            }
+
+            .btn-hero {
+                width: 90%; /* 按鈕更寬 */
+                height: 54px;
+            }
+
+            .service-img {
+                height: 240px; /* 稍微縮減圖片高度，比例更佳 */
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <nav>
+        <a href="#home" class="nav-logo">
+            <img src="https://i.urusai.cc/rsJbn.jpeg" alt="TOP BEAUTY 頂尖美學">
+        </a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="選單">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="#about" class="nav-item">關於我們</a>
+            <a href="#philosophy" class="nav-item">純淨堅持</a>
+            <a href="#services" class="nav-item">服務項目</a>
+            <a href="#pricing" class="nav-item">價目表</a>
+            <a href="#testimonials" class="nav-item">真實回饋</a>
+            <a href="#contact" class="btn-reserve-nav">預約諮詢</a>
+        </div>
+    </nav>
+
+    <!-- 首頁 Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>TOP BEAUTY</h1>
+            <p class="hero-subtitle-expert">足部保養專家</p>
+            <a href="#contact" class="btn-large btn-hero">立即預約體驗</a>
+        </div>
+    </section>
+
+    <!-- 關於我們 -->
+    <section id="about" class="about-parallax">
+        <div class="container">
+            <div class="about-content-grid">
+                <div class="story-text">
+                    <h2 class="section-title" style="margin-bottom: 15px;">關於我們</h2>
+                    <p class="section-subtitle" style="margin-bottom: 30px; color: var(--accent-blue);">About Us</p>
+
+                    <p>我們深耕美甲業已經 26 年囉✨</p>
+                    <p>因為團隊創辦人自身也曾經深受「嵌甲」的困擾，</p>
+                    <p>所以完全能感同身受那種痛楚與不便🥺</p>
+                    <p>長期下來，我們看過太多人從小小的不適，</p>
+                    <p>慢慢累積成長期的困擾。</p>
+                    <p>很多時候，大家不是不在意，</p>
+                    <p>而是「不知道怎麼處理」，</p>
+                    <p>甚至曾經用錯方式，讓問題反覆發生...</p>
+                    <p>為了照顧每一雙需要幫助的腳丫，</p>
+                    <p>我們成立了專注於深度修護的專業團隊！</p>
+                    <p>店裡有兩位非常細心、溫柔的美甲師駐店服務，</p>
+                    <p>把腳交給我們吧！</p>
+                    <p>我們一起找回乾淨、舒服的漂亮指尖🌱</p>
+                </div>
+
+                <div class="founder-photo-container">
+                    <img src="https://i.urusai.cc/qfEeZ.png" alt="頂尖美學專業美甲師團隊" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 純淨堅持 -->
+    <section id="philosophy" class="features">
+        <div class="container">
+            <h2 class="section-title">純淨堅持</h2>
+            <p class="section-subtitle">Safety & Hygiene Standard</p>
+
+            <div class="feature-grid">
+                <!-- 第一個 -->
+                <div class="feature-card">
+                    <div class="feature-img-container" style="display: flex; gap: 8px; background: #FAF6F0; padding: 8px;">
+                        <img src="https://i.urusai.cc/srVgx.jpg" alt="高壓滅菌消毒鍋" style="width: 50%; height: 100%; object-fit: cover; border-radius: 6px;" loading="lazy">
+                        <img src="https://i.urusai.cc/4Fzff.jpg" alt="金屬工具滅菌打包" style="width: 50%; height: 100%; object-fit: cover; border-radius: 6px;" loading="lazy">
+                    </div>
+                    <div class="feature-content">
+                        <i class="fa-solid fa-shield-halved feature-icon"></i>
+                        <h3 style="margin-bottom: 12px; font-size: 18px;">嚴格衛生把關 ｜ 一人一用與高壓滅菌</h3>
+                        <div class="story-text">
+                            <p>因為衛生與安全對我們來說非常重要，</p>
+                            <p>像是磨板這類的拋棄式耗材，</p>
+                            <p>我們堅持「一人一用」，</p>
+                            <p>用完即丟，絕不重複使用🛡️</p>
+                            <p style="margin-top: 12px;">金屬類工具採用醫療級的</p>
+                            <p>「高壓高溫滅菌消毒」進行處理，</p>
+                            <p>其他工具也會搭配紫外線全面消毒，</p>
+                            <p>讓每一位客人都能百分之百安心✨</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第二個 -->
+                <div class="feature-card">
+                    <div class="feature-img-container">
+                        <img src="https://i.urusai.cc/g2Pi5.jpeg" alt="極簡質感空間與精油" loading="lazy">
+                    </div>
+                    <div class="feature-content">
+                        <i class="fa-solid fa-spa feature-icon"></i>
+                        <h3 style="margin-bottom: 12px; font-size: 18px;">極簡質感空間 ｜ 木質調與天然精油</h3>
+                        <div class="story-text">
+                            <p>我們打造了乾淨明亮的木質調空間，</p>
+                            <p>並搭配天然精油的舒心香氣，</p>
+                            <p>希望讓妳在保養的過程中，</p>
+                            <p>也能好好休息、放鬆心情💤</p>
+                            <p>享受一段屬於自己的寧靜時光✨</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服務項目 -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">服務項目</h2>
+            <p class="section-subtitle">Purification Journey</p>
+
+            <!-- 第一項 -->
+            <div class="service-row">
+                <div class="service-img">
+                    <img src="https://i.urusai.cc/1OtTD.png" alt="捲甲溫和保養前後對比" loading="lazy">
+                </div>
+                <div class="story-text">
+                    <h3 style="font-size: 20px; margin-bottom: 12px;">卸下負擔｜捲甲溫和保養</h3>
+                    <div class="service-highlight-badge">
+                        <p><i class="fa-solid fa-feather" style="color: var(--accent-blue); margin-right: 6px;"></i> 告別隱隱作痛，重拾輕盈步伐</p>
+                    </div>
+                    <p>每一次走路時隱隱作痛的困擾，</p>
+                    <p>其實都不需要默默忍耐。🌱</p>
+                    <p>我們以極其溫柔、專業的方式，</p>
+                    <p>幫指甲卸除壓迫、調整生長方向，</p>
+                    <p>讓每一步都能重新找回輕盈與舒適。✨</p>
+                </div>
+            </div>
+
+            <!-- 第二項 -->
+            <div class="service-row">
+                <div class="service-img">
+                    <img src="https://i.urusai.cc/Qtdg9.png" alt="指甲深層淨化" loading="lazy">
+                </div>
+                <div class="story-text">
+                    <h3 style="font-size: 20px; margin-bottom: 12px;">自然呼吸｜指甲深層淨化</h3>
+                    <div class="service-highlight-badge">
+                        <p><i class="fa-solid fa-wind" style="color: var(--accent-blue); margin-right: 6px;"></i> 溫和代謝老廢，還原清爽健康</p>
+                    </div>
+                    <p>面對指甲變厚、變色等狀況，</p>
+                    <p>我們透過細緻的專業深層淨化，</p>
+                    <p>溫和代謝掉老廢與多餘累積，</p>
+                    <p>一步步找回指甲原本健康的呼吸感，</p>
+                    <p>重新展現乾淨清爽的自然風貌🌿</p>
+                </div>
+            </div>
+
+            <!-- 第三項 -->
+            <div class="service-row">
+                <div class="service-img">
+                    <img src="https://i.urusai.cc/vVfbE.png" alt="足部深層保養" loading="lazy">
+                </div>
+                <div class="story-text">
+                    <h3 style="font-size: 20px; margin-bottom: 12px;">活力注入｜足部深層保養</h3>
+                    <div class="service-highlight-badge">
+                        <p><i class="fa-solid fa-spa" style="color: var(--accent-blue); margin-right: 6px;"></i> 寵愛疲憊雙足，再現絲滑嫩白</p>
+                    </div>
+                    <p>平時奔波勞累的雙足，</p>
+                    <p>值得好好放鬆、被溫柔呵護。🌸</p>
+                    <p>我們透過細緻的去角質與滋養手技，</p>
+                    <p>帶走粗糙與疲憊，</p>
+                    <p>讓雙腿重現如絲緞般的光滑與嫩白✨</p>
+                </div>
+            </div>
+
+            <!-- 第四項 -->
+            <div class="service-row">
+                <div class="service-img zoom-nail">
+                    <img src="https://i.urusai.cc/jrpZB.jpg" alt="精緻凝膠美甲成果" loading="lazy">
+                </div>
+                <div class="story-text">
+                    <h3 style="font-size: 20px; margin-bottom: 12px;">氣質提升｜精緻凝膠美甲</h3>
+                    <div class="service-highlight-badge">
+                        <p><i class="fa-solid fa-gem" style="color: var(--accent-blue); margin-right: 6px;"></i> 簡約高級設計，指尖散發光采</p>
+                    </div>
+                    <p>做完深層的淨化保養後，</p>
+                    <p>給指甲穿上漂亮的新衣吧！💅</p>
+                    <p>我們提供簡約高級的單色與法式設計，</p>
+                    <p>讓雙腳看起來乾淨又有質感。</p>
+                    <p>即使是最基礎的款式，</p>
+                    <p>也能讓妳的氣質大幅提升喔！✨</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 價目表 -->
+    <section id="pricing" class="price-section">
+        <div class="container">
+            <h2 class="section-title">價目表</h2>
+            <p class="section-subtitle">Transparent Pricing</p>
+
+            <div class="price-card-container">
+                <img src="https://i.urusai.cc/vMJxa.jpeg" alt="TOP BEAUTY 頂尖美學 服務價目表" loading="lazy">
+
+                <div class="price-notice-box story-text">
+                    <p style="font-weight: 500; color: var(--text-primary); margin-bottom: 8px;">
+                        <i class="fa-solid fa-circle-info" style="color: var(--accent-blue);"></i> 溫馨說明與透明報價：
+                    </p>
+                    <p style="margin-bottom: 0;">各項保養與問題指甲處理費用，歡迎先拍照透過 LINE 諮詢，我們將依照您的實際狀況為您評估最適合的方案與透明報價。絕不亂收費，讓您全程安心美麗❤️</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 真實回饋 -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">真實回饋</h2>
+            <p class="section-subtitle">Customer Voices</p>
+
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>「服務很好 也不會疼痛 凍甲處理得非常好 也很衛生都有消毒工具 有困擾的人可以來做處理 👍」</p>
+                    </div>
+                    <div class="testi-author">— Google 用戶 志傑</div>
+                </div>
+
+                <div class="testi-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>「去做問題指甲的處理與後續美甲，美容師很專業很讓人放心，先很有耐心把問題指甲詳細解釋並做適當處置後，又做了美美的指甲🥰，感謝」</p>
+                    </div>
+                    <div class="testi-author">— Google 用戶 敏敏特目白</div>
+                </div>
+
+                <div class="testi-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>「凍甲（嵌甲）問題困擾許久，老師非常的專業，過程完全沒有不適，處理後也沒什麼問題，療程後修甲即可，大推👍」</p>
+                    </div>
+                    <div class="testi-author">— 專屬貴賓</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 療癒小彩蛋 -->
+    <section id="easter-egg" class="easter-egg-section">
+        <div class="container story-text" style="max-width: 600px; margin: 0 auto;">
+            <h3 style="font-size: 20px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <i class="fa-solid fa-cat" style="color: var(--accent-blue);"></i> 療癒小彩蛋
+            </h3>
+            <p>對了，店裡還有兩位毛孩小幫手🐾</p>
+            <p>牠們平時很做自己，不會刻意去打擾客人，</p>
+            <p>但如果運氣好的話，可能會在放鬆保養的時候，看見牠們優雅路過的可愛身影喔🐈</p>
+            <p style="font-size: 13px; color: var(--accent-blue); margin-top: 15px;">（若您比較怕怕，也可在諮詢時提前告知，我們會為您妥善安排空間）</p>
+        </div>
+    </section>
+
+    <!-- 預約諮詢 -->
+    <section id="contact" style="background-color: var(--bg-color);">
+        <div class="container">
+            <h2 class="section-title">預約與諮詢</h2>
+            <p class="section-subtitle">Consultation & Booking</p>
+
+            <div class="booking-steps story-text">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <h3 style="margin-bottom: 10px; font-size: 18px;">拍下照片</h3>
+                    <p>請先加我們的 LINE，<br>拍下清晰的指甲近照傳給我們📸</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <h3 style="margin-bottom: 10px; font-size: 18px;">線上諮詢</h3>
+                    <p>專業美甲師會親自看照片，<br>給予合適的修護方向💬</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <h3 style="margin-bottom: 10px; font-size: 18px;">預約時間</h3>
+                    <p>確認諮詢內容沒問題後，<br>安排您的專屬保養時段🗓️</p>
+                </div>
+            </div>
+
+            <div class="contact-box">
+                <h3>即刻開始您的保養旅程</h3>
+                <div class="action-buttons">
+                    <a href="https://lin.ee/9mYUz71" target="_blank" class="btn-large">
+                        <i class="fa-brands fa-line"></i> LINE 線上諮詢預約
+                    </a>
+                    <a href="https://www.instagram.com/top_footcare" target="_blank" class="btn-large" style="background-color: transparent; color: var(--text-primary);">
+                        <i class="fa-brands fa-instagram"></i> 追蹤我們的 Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <div class="footer-content" style="flex-direction: column; justify-content: center; text-align: center; gap: 20px;">
+
+            <div style="opacity: 0.8; margin-top: 10px;">
+                <span>新竹市北區中山路197號</span>
+            </div>
+
+            <div style="opacity: 0.8;">
+                &copy; 2001-2026 TOP BEAUTY. All Rights Reserved.
+            </div>
+
+            <!-- 觀看人次計數器 -->
+            <div class="small-counter" style="margin-top: 5px; opacity: 0.7; justify-content: center; font-size: 13px;">
+                <i class="fa-regular fa-eye"></i> 累積觀看人次：<span id="visitCount" style="font-size: 16px; color: #E2B961; font-weight: 500;">0</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 手機版選單切換
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const navLinks = document.getElementById('navLinks');
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            if (hamburgerBtn) {
+                hamburgerBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            // 點擊選單項目後自動關閉選單
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // 瀏覽人次跳動特效
+            function animateValue(obj, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    // 使用 easeOutCubic 讓數字先快後慢，更有質感
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    const currentVal = Math.floor(easeOut * (end - start) + start);
+
+                    // 加上千分位逗號
+                    obj.innerHTML = currentVal.toLocaleString();
+
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            const viewCountElement = document.getElementById('visitCount');
+            if (viewCountElement) {
+                // 基礎數字 + 隨機每次載入增加的觀看數 (模擬真實增長與活躍度)
+                const baseCount = 28540;
+                const randomIncrement = Math.floor(Math.random() * 10) + 1;
+                const targetCount = baseCount + randomIncrement;
+
+                // 啟動動畫 (給予 2.5 秒的跳動時間)
+                setTimeout(() => {
+                    animateValue(viewCountElement, 0, targetCount, 2500);
+                }, 300);
+            }
+        });
+    </script>
+</body>
+</html>
