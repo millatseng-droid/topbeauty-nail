@@ -502,6 +502,57 @@
             text-align: center;
         }
 
+        /* 常見問題 FAQ */
+        .faq-section {
+            background-color: #FFFFFF;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 10px;
+        }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 20px 0;
+            font-size: 16px;
+            color: var(--text-primary);
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        .faq-question:hover {
+            color: var(--accent-blue);
+        }
+        .faq-icon {
+            font-size: 18px;
+            color: var(--accent-blue);
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .faq-answer-inner {
+            padding-bottom: 25px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+            letter-spacing: 0.06em;
+        }
+
         .booking-steps {
             display: flex;
             justify-content: center;
@@ -942,11 +993,11 @@
             <a href="#services" class="nav-item">服務項目</a>
             <a href="#pricing" class="nav-item">價目表</a>
             <a href="#testimonials" class="nav-item">真實回饋</a>
+            <a href="#faq" class="nav-item">常見問題</a>
             <a href="#contact" class="btn-reserve-nav">預約諮詢</a>
         </div>
     </nav>
 
-    <!-- 首頁 Hero -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>TOP BEAUTY</h1>
@@ -1188,6 +1239,58 @@
         </div>
     </section>
 
+    <!-- 常見問題 FAQ -->
+    <section id="faq" class="faq-section">
+        <div class="faq-container">
+            <h2 class="section-title">常見問題</h2>
+            <p class="section-subtitle">Q & A</p>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    處理問題指甲（捲甲/嵌甲）會痛嗎？ <i class="fa-solid fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        請放心，我們的處理方式非常溫和。美甲師會小心翼翼地為您修剪與調整，絕大多數的客人在過程中都不會感到疼痛，反而會因為解除了長期的壓迫感而覺得放鬆許多喔！
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    如果我的指甲現在正在發炎流血，可以過去處理嗎？ <i class="fa-solid fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        如果指甲目前處於「嚴重紅腫、發炎化膿或流血」的急性期，建議您先至皮膚科或外科診所就醫，待醫師協助控制發炎狀況後，再來找我們進行後續的深層修護與保養，這樣對您來說是最安全、最舒適的。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    保養前需要自己先剪指甲嗎？ <i class="fa-solid fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        完全不需要喔！請保留您目前的指甲長度與狀態直接過來即可。如果自己先修剪了，反而可能會讓我們難以判斷指甲生長的方向，或是長度太短而無法進行適當的調整。
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    問題指甲大概需要處理幾次才會好？ <i class="fa-solid fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        因為每個人的指甲狀況、嚴重程度與生長速度都完全不同，無法給定絕對的次數標準。建議您直接透過 LINE 傳送清晰的指甲近照給我們，讓專業美甲師先為您進行初步評估，給予最適合您的專屬修護建議喔！
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 預約諮詢 -->
     <section id="contact" style="background-color: var(--bg-color);">
         <div class="container">
@@ -1245,7 +1348,11 @@
         </div>
     </footer>
 
-    <script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot, increment } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
         document.addEventListener("DOMContentLoaded", function() {
             // 手機版選單切換
             const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -1262,6 +1369,28 @@
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
                     navLinks.classList.remove('active');
+                });
+            });
+
+            // FAQ 手風琴展開收合
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // 關閉其他已展開的 FAQ
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                    });
+
+                    // 如果原本沒有展開，就將其展開
+                    if (!isActive) {
+                        item.classList.add('active');
+                        const answer = item.querySelector('.faq-answer');
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                    }
                 });
             });
 
@@ -1285,18 +1414,83 @@
                 window.requestAnimationFrame(step);
             }
 
-            const viewCountElement = document.getElementById('visitCount');
-            if (viewCountElement) {
-                // 基礎數字 + 隨機每次載入增加的觀看數 (模擬真實增長與活躍度)
-                const baseCount = 28540;
-                const randomIncrement = Math.floor(Math.random() * 10) + 1;
-                const targetCount = baseCount + randomIncrement;
+            // Firebase 初始化與真實計數器邏輯
+            async function initRealVisitCounter() {
+                let app, db, auth;
+                try {
+                    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+                    app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    auth = getAuth(app);
+                } catch (error) {
+                    console.error("Firebase init failed:", error);
+                    return;
+                }
 
-                // 啟動動畫 (給予 2.5 秒的跳動時間)
-                setTimeout(() => {
-                    animateValue(viewCountElement, 0, targetCount, 2500);
-                }, 300);
+                if (!auth || !db) return;
+
+                // 1. 確保雲端權限驗證
+                try {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                } catch (error) {
+                    console.error("Auth failed:", error);
+                    return;
+                }
+
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+                // 雲端資料庫儲存路徑
+                const counterRef = doc(db, 'artifacts', appId, 'public', 'data', 'metrics', 'visitCount');
+
+                // 2. 判斷該使用者在這次瀏覽器開啟期間中，是否已經算過人次
+                if (!sessionStorage.getItem('has_visited_topbeauty')) {
+                    try {
+                        const docSnap = await getDoc(counterRef);
+                        if (docSnap.exists()) {
+                            // 已經有資料，真實人次 + 1
+                            await updateDoc(counterRef, { count: increment(1) });
+                        } else {
+                            // 第一次啟動，設定起始基礎數字
+                            await setDoc(counterRef, { count: 28541 }); 
+                        }
+                        // 標記已訪問，避免重新整理頁面被瘋狂洗數據
+                        sessionStorage.setItem('has_visited_topbeauty', 'true'); 
+                    } catch (e) {
+                        console.error("Error updating counter:", e);
+                    }
+                }
+
+                // 3. 即時監聽雲端資料變化，並帶入原本的跳動特效
+                let isInitialLoad = true;
+                onSnapshot(counterRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        const currentCount = data.count || 28540;
+                        const viewCountElement = document.getElementById('visitCount');
+
+                        if (viewCountElement) {
+                            if (isInitialLoad) {
+                                // 第一次讀取時，跑從 0 跳到真實數字的特效
+                                setTimeout(() => {
+                                    animateValue(viewCountElement, 0, currentCount, 2500);
+                                }, 300);
+                                isInitialLoad = false;
+                            } else {
+                                // 若有人在其他手機上瀏覽使數字增加，畫面直接即時更新真實數字
+                                viewCountElement.innerHTML = currentCount.toLocaleString();
+                            }
+                        }
+                    }
+                }, (error) => {
+                    console.error("Snapshot error:", error);
+                });
             }
+
+            // 啟動真實雲端計數器
+            initRealVisitCounter();
         });
     </script>
 </body>
